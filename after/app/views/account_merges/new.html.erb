@@ -1,0 +1,21 @@
+
+<h1>Merge two accounts</h1>
+<% if @merge.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+    <% @merge.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for @merge do |f| %>
+  <%= f.label :source_id %>
+  <%= f.collection_select :source_id, Account.all, :id, :name %>
+  <br>
+  <%= f.label :target_id %>
+  <%= f.collection_select :target_id, Account.all, :id, :name %>
+  <br><br>
+  <%= f.submit('merge') %>
+<% end %>

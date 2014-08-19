@@ -1,0 +1,25 @@
+<h1>Merge two accounts</h1>
+<%= form_tag do_merge_accounts_path do %>
+  <%= label_tag :source_id, 'Source account' %>
+
+  <% if @source_missing %>
+    <div class="error">
+      You must select a source account!
+    </div>
+  <% end %>
+
+  <% selectable_accounts = Account.all.collect { |a| [a.name, a.id] } %>
+  <%= select_tag :source_id, options_for_select(selectable_accounts) %>
+  <br>
+
+  <%= label_tag :target_id, 'Target account' %>
+
+  <% if @target_missing %>
+    <div class="error">
+    You must select a target account!
+    </div>
+  <% end %>
+  <%= select_tag :target_id, options_for_select(selectable_accounts) %>
+  <br><br>
+  <%= submit_tag('merge') %>
+<% end %>

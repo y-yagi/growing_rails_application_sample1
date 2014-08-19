@@ -1,0 +1,30 @@
+<h1>Listing accounts</h1>
+<%= link_to('merge account', merge_form_accounts_path) %><br>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Credits</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @accounts.each do |account| %>
+      <tr>
+        <td><%= account.name %></td>
+        <td><%= account.email %></td>
+        <td><%= account.credits %></td>
+        <td><%= link_to 'Show', account %></td>
+        <td><%= link_to 'Edit', edit_account_path(account) %></td>
+        <td><%= link_to 'Destroy', account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Account', new_account_path %>
