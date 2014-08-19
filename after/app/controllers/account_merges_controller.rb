@@ -5,7 +5,6 @@ class AccountMergesController < ApplicationController
 
   def create
     build_merge
-    binding.pry
     if @merge.save
       redirect_to @merge.target
     else
